@@ -1,0 +1,8 @@
+#!/bin/bash
+#Task 4
+
+#The name of the dictionary that the output will be saved.
+outputfile="$1.dict"
+
+#load all the context from the given file, get all the words have 3 to 8 letter only, translate the upparcase letter to lowercase, and remove duplicates words and save the result to the dictionary.
+cat $1 | grep -Eo '\<[a-zA-Z]{3,8}\>' | tr A-Z a-z |sort -u > $outputfile

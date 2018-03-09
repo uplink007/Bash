@@ -1,0 +1,11 @@
+#!/bin/bash
+#Task 2
+
+#Find all the regular files in the current directory that dont have the sh extention and give it the rw-r----- permission.
+find -maxdepth 1 -type f -not -name '*.sh' -exec chmod 640 {} \;
+
+#Find all the regular files in the current directory that have the sh extention and give it the rwxr-x--- permission.
+find -maxdepth 1 -type f -name '*.sh' -exec chmod 750 {} \;
+
+#Find all the directories in the current directory give it the rwx--x--- permission.
+find -maxdepth 1 -type d -exec chmod 710 {} \;

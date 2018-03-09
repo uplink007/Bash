@@ -1,0 +1,18 @@
+#!/bin/bash
+#Task 5
+
+#Loop truogh all the files and the directories of the current directory.
+for File in ./*; do
+	
+	#Get the current file name.
+	FileName="${File%.*}"
+
+	#Check if the file is c source file.
+	if [[ $File == *.c ]] && [[ -f $File ]]; then
+		
+		#If the condition are met then create assembly and execable progam of the code.
+		gcc -S "$File" -masm=intel -std=c11 -W -g -Os -o "${FileName}.s"
+		gcc "$File" -masm=intel -std=c11 -W -g -Os -o "${FileName}.o"
+	fi
+
+done

@@ -1,0 +1,33 @@
+#!/bin/bash
+#Task 3
+
+#Create in the father directory of the current directory, a directory called backup if it not exsit.
+mkdir -p ../BackUp
+chmod 710 ../BackUp
+
+#Loop truogh all the files and the directories of the current directory.
+for i in ./*; do 
+	
+	#Check if the file is regular file.
+	if [ -f "$i" ]; then 
+		
+		cp "$i" "../BackUp/$i" #./
+
+	#Check if the file is directory.
+	elif [ -d "$i" ]; then
+		mkdir -p ../BackUp/$i
+		chmod 710 ../BackUp/$i
+		for j in $i/*; do
+			#Check if the file is regular file.
+			if [ -f "$j" ]; then 
+				
+				cp "$j" "../BackUp/$j" #./
+				#Check if the file is directory.
+			elif [ -d "$j" ]; then
+
+				#If the condition are met then create folder in realtive location in the BackUp directory.
+				mkdir -p "../BackUp/$i/$j"
+			fi
+		done
+	fi
+done
