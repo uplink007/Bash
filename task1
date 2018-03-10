@@ -1,4 +1,4 @@
 #!/bin/bash
 #Task 1
 #find all files in depth 1(home dir)
-find $HOME -maxdepth 1 -type f   -exec head -1 {} +
+find $HOME -maxdepth 1 -type f -name "*.txt" ! -name "report.txt" -exec head -1 {} + > report.txt
